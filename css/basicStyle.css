@@ -23,13 +23,42 @@ body{
 .menu-container{
     flex:2;
 }
-
+@media (max-width: 1000px) {
+    .img-container{
+        overflow:hidden;
+        /* height:700px !important; */
+        display:block;
+        width: 100%;
+        height:100% !important;
+    }
+    .cover-image{
+        width: 100%;
+        object-fit: contain;
+    }
+    .menu-container{
+        width:100%;
+        padding-bottom:150px;
+    }
+    .main-container{
+        display:block;
+    }
+    .read-botmoder{
+        margin: 0 !important;
+        padding: 300px 0 0 0;
+    }
+    :root{
+        --back-button-container-height : 120px;
+    }
+    .backButton{
+        font-size:x-large;
+    }
+}
 
 .img-container{
     position:sticky;
     top:0px;
     display:flex;
-    flex:1;
+    /* flex:1; */
     height: 100vh;
 }
 .cover-image{
