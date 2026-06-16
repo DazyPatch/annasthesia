@@ -3,9 +3,12 @@ let backButtonContainerHeight = 60;
 const usingBackButton = true;
 const wordpressImageFolderPath = "../Chapters/"; //DO NOT CHANGE UNDER NORMAL CIRCUMSTANCE
 console.log(window.location.href);
-const chapterFolderPath = "Ch1";
+const chapterNum = (window.location.href).split("/").pop().split(".")[0].replace("readChapter", "");
+// console.log(chapterNum);
+const chapterFolderPath = "Ch" + chapterNum;
 const pagesPath = wordpressImageFolderPath + chapterFolderPath + "/";
-const pagesLength = 47;
+const pagesLengths = [47, 19]
+const pagesLength = pagesLengths[chapterNum-1];
 
 var pages = [];
 var showingGoBackAtBeginning = true;
@@ -118,7 +121,7 @@ function goToPageNum(pnum){
         for (const part of urlParts){
             backURL = backURL + part + "/";
         }
-        window.location.href = backURL + "end.html";
+        window.location.href = backURL + "end.html?ch=" + chapterNum;
         return;
     }
     
