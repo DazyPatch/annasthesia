@@ -1,0 +1,150 @@
+:root{
+    --page-height : 97vh;
+    
+    --back-button-container-height: 60px;
+        --using-back-button : 1; /* 0 if false, 1 if true */
+        --loading-page-color: white; /* when image is still loading, this colour appears. Preferably comic border colour */
+        --background-color: rgb(48, 38, 50);
+        --progress-bar-color: rgb(96, 96, 254);
+}
+/* for reader */
+body{
+    margin:0;
+    padding:0;
+}
+.pageImage{
+    max-height: 100%;
+    max-width: 100%;
+    margin: auto;
+    background-color: var(--loading-page-color);
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+
+    display:block;
+}
+.pageContainer{
+    height: 100vh;
+    margin: 0 !important;
+    max-width: 100% !important;
+    background-color: var(--background-color);
+}
+.pageImageContainer{
+    height : var(--page-height);
+    align-content: center;
+}
+.navMenuContainer{
+    transition: all 0.1s ease-out;
+
+    position:absolute;
+    bottom:  calc(var(--back-button-container-height) * -1 * var(--using-back-button));
+    height: calc((100vh - var(--page-height) ) * 1.5);
+    width:100%;
+    display:block;
+}
+.navMenuContainer:hover{
+    transition: all 0.1s ease-out;
+
+    height: calc((100vh - var(--page-height) ) * 2);
+    background-color: black;
+}
+.navMenu{
+    
+    width : 90%;
+    height:100%;
+    margin:auto;
+    display: flex;
+    flex-direction: row;
+
+    
+}
+
+.pageToButton:after{
+    content : attr(to-page);
+    background-color: rgba(26, 17, 32, 0.7);
+    color : white;
+    padding: 4px 8px;
+    transform: translate(-50%);
+    bottom: 100%;
+    position: absolute;
+    transition: opacity 0.3s;
+    
+    opacity: 0;
+}
+.pageToButton:hover::after{
+    transition: opacity 0.3s;
+    opacity: 1;
+}
+.pageToButton{
+    height: 10%;
+    margin: auto 0.3% auto 0.3% ;
+    flex: auto;
+    background-color: rgba(210, 208, 255, 0.3);
+    border: none;
+    padding: 0;
+    transition: background-color 0.3s;
+}
+.navMenu:hover .pageToButton{
+    height:30%;
+}
+.upTo{
+    background-color: var(--progress-bar-color) !important;
+}
+.pageToButton:hover{
+    background-color: rgba(210, 208, 255, 0.6);
+    transition: background-color 0.3s;
+    /* transition: backgroun */
+}
+.goTo{
+    position: absolute;
+    display:grid;
+    width: 100%;
+    height: var(--page-height);
+    grid-template-columns: auto auto;
+}
+.goNext{
+    height: 100%;
+    cursor: pointer;
+}
+.goPrev{
+    height: 100%;
+    cursor: pointer;
+}
+.backButtonContainer{
+    height: calc(var(--back-button-container-height) * var(--using-back-button));
+    max-width : 100% !important;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    display: flex;
+    
+    
+}
+.backButtonContainer.backButtonHidden .backButton{
+    translate: 0 calc(var(--back-button-container-height) * -1);
+    transition: all 0.2s ease-out;
+}
+
+.backButton{
+    transition: all 0.2s ease-out;
+    height: calc(var(--back-button-container-height) * 0.7);
+    width: calc(var(--back-button-container-height) * 2);
+    background-color: white;
+    border: 3px black solid;
+    border-radius: calc(var(--back-button-container-height) * 0.35);
+    margin: calc(var(--back-button-container-height) * 0.1) calc(var(--back-button-container-height) * 0.5);
+    display: inline-block;
+    align-content:center;
+    text-align:center;
+    color: black;
+    position:fixed;
+
+    text-decoration: none;
+
+}
+
+.wp-site-blocks{
+padding:0px;
+}

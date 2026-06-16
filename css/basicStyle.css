@@ -1,0 +1,77 @@
+:root{
+    --back-button-container-height: 60px;
+}
+.website-logo{
+    width: 200px;
+}
+body{
+    /* display:flex; */
+    /* background-color:rgb(183, 188, 216); */
+    background-color:rgb(132, 190, 255);
+    margin: 0;
+
+}
+.full-width{
+    background-image: linear-gradient(to bottom, rgb(224, 235, 255), rgb(132, 190, 255));
+}
+.main-header{
+    /* display:none; */
+    position:fixed;
+    background: none;
+}
+.main-container{
+    display:flex;
+}
+.menu-container{
+    flex:2;
+}
+
+
+.img-container{
+    
+    display:flex;
+    flex:1;
+    height: 100vh;
+    /* width:39%; */
+}
+.cover-image{
+    position:fixed;
+    height: 100%;
+}
+
+
+.read-botmoder{
+    font: bold 50px Arial;
+    color:white;
+    margin-top:300px;
+    text-align:center;
+    -webkit-text-stroke: 7px black;
+
+}
+.fix-stroke {
+   paint-order: stroke fill;
+}
+.textShadow {
+    text-shadow: -2.1px -2.1px black,-2.1px 2.1px black,2.1px -2.1px black,2.1px 2.1px black, -3px 0px black,0px 3px black,0px -3px black,3px 0px black;
+	/* text-shadow: 3px 0 black,2.83487px .981584px #000,2.35766px 1.85511px #000,1.62091px 2.52441px #000,.705713px 2.91581px #000,-.287171px 2.98622px #000,-1.24844px 2.72789px #000,-2.07227px 2.16926px #000,-2.66798px 1.37182px #000,-2.96998px .42336px #000,-2.94502px -.571704px #000,-2.59586px -1.50383px #000,-1.96093px -2.27041px #000,-1.11013px -2.78704px #000,-.137119px -2.99686px #000,.850987px -2.87677px #000,1.74541px -2.43999px #000,2.44769px -1.73459px #000,2.88051px -.838247px #000,0 1px #000,0 2px #000,0 3px #000,0 4px #000,0 5px #000,1.74541px 5px #000,-1.96093px 5px #000,0 6px #000; */
+}
+
+.backButton{
+
+    
+
+    height: calc(var(--back-button-container-height) * 0.7);
+    width: calc(var(--back-button-container-height) * 2);
+    background-color: white;
+    border: 3px black solid;
+    border-radius: calc(var(--back-button-container-height) * 0.35);
+    margin: 10px auto;
+    display: block;
+    align-content:center;
+    text-align:center;
+    color: black;
+    /* position:fixed; */
+
+    text-decoration: none;
+
+}
