@@ -2,13 +2,8 @@
 let backButtonContainerHeight = 60;
 const usingBackButton = true;
 const wordpressImageFolderPath = "../Chapters/"; //DO NOT CHANGE UNDER NORMAL CIRCUMSTANCE
-console.log(window.location.href);
-const chapterNum = (window.location.href).split("/").pop().split(".")[0].replace("readChapter", "");
-// console.log(chapterNum);
 const chapterFolderPath = "Ch" + chapterNum;
 const pagesPath = wordpressImageFolderPath + chapterFolderPath + "/";
-const pagesLengths = [47, 19]
-const pagesLength = pagesLengths[chapterNum-1];
 
 var pages = [];
 var showingGoBackAtBeginning = true;
@@ -32,7 +27,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
     if (usingBackButton){
         window.scrollTo(0, backButtonContainerHeight);
     }
-    
+    if (!chapterNum || chapterNum > pagesLengths.length || chapterNum < 1 ){
+        window.location.href = "../index.html";
+    }
     
     
     for (let i = 0; i < pagesLength; i++){
@@ -93,12 +90,6 @@ function hideOrShowTouchArea(){
     const nextButton = document.querySelector(".goNext");
     const prevButton = document.querySelector(".goPrev"); 
 
-    // if (nextButton.destination > pagesLength){
-    //     nextButton.style.visibility = "hidden";
-    //     nextButton.destination = pagesLength;
-    // } else{
-    //     nextButton.style.visibility = "visible";
-    // }
 
     if (prevButton.destination < 1){
         prevButton.style.visibility = "hidden";
@@ -139,7 +130,7 @@ function goToPageNum(pnum){
     var leadingZero = pageNumber < 10 ? "0" :'';
     pageNumberString = leadingZero + pageNumber.toString();
     const url2 = new URL(window.location.href);
-
+    url2.searchParams.set("ch", chapterNum);
     url2.searchParams.set("pg", pageNumberString);
     window.history.replaceState('', '', url2);
     initNav2();
@@ -151,6 +142,7 @@ function createPage(){
     if (!pageNumber || pageNumber > pagesLength || pageNumber < 1 ){
         pageNumber = 1;
     }
+    
 
     goToPageNum(parseInt(pageNumber));
 }

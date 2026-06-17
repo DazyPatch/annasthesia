@@ -1,14 +1,16 @@
 document.addEventListener("DOMContentLoaded", function(event) {
 
+    const prevPage = document.querySelector(".prev-page");
+    prevPage.href = "../Readers/read.html/?ch=" + chapterNum + "&pg=" + pagesLength;
 
-let params = new URLSearchParams(document.location.search);
-var chapterNum = parseInt(params.get("ch"));
-const pagesLengths = [47, 19]
-const pagesLength = pagesLengths[chapterNum-1];
+    const endOf = document.querySelector(".read-botmoder");
+    endOf.innerHTML = "End of Chapter " + chapterNum;
 
-const prevPage = document.querySelector(".prev-page");
-prevPage.href = "../Readers/readChapter" + chapterNum + ".html?pg=" + pagesLength;
+    const nextChapter = document.querySelector(".next-chapter");
 
-const endOf = document.querySelector(".read-botmoder");
-endOf.innerHTML = "End of Chapter " + chapterNum;
+    if(chapterNum < pagesLengths.length){
+        nextChapter.href = "../Readers/read.html?ch=" + (chapterNum+1) + "&pg=" + 1;
+    } else{
+        nextChapter.style.display = "none";
+    }
 });
