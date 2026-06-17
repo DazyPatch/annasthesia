@@ -5,3 +5,5 @@ var chapterNum = parseInt(params.get("ch"));
 
 const pagesLengths = [47, 19]
 const pagesLength = pagesLengths[chapterNum-1];
+
+const inVSCode = false;

@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         window.scrollTo(0, backButtonContainerHeight);
     }
     if (!chapterNum || chapterNum > pagesLengths.length || chapterNum < 1 ){
-        window.location.href = "../index.html";
+        window.location.href = ".." + (inVSCode ? "/index.html" : "");
     }
     
     
@@ -49,13 +49,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
     hideOrShowTouchArea();
 
     const backButton = document.querySelector(".backButton");
-    let urlParts = (window.location.href).split("/");
-    urlParts.splice(-2);
-    let backURL = "";
-    for (const part of urlParts){
-        backURL = backURL + part + "/";
-    }
-    backButton.href = backURL + "index.html";
+    let url = window.location.href;
+    let backURL = url.substring(0, url.lastIndexOf('/'));
+    backURL = backURL.substring(0, backURL.lastIndexOf('/'));
+    console.log(backURL);
+    backButton.href = backURL + "/index.html";
+
+    // removeExtension();
 
     setTimeout(function(){
         const backButtonContainer = document.querySelector(".backButtonContainer");
@@ -106,13 +106,12 @@ function goToPageNum(pnum){
     }
 
     if (pnum > pagesLength){
-        let urlParts = (window.location.href).split("/");
-        urlParts.splice(-1);
-        let backURL = "";
-        for (const part of urlParts){
-            backURL = backURL + part + "/";
-        }
-        window.location.href = backURL + "end.html?ch=" + chapterNum;
+        
+        let url = window.location.href;
+        let backURL = url.substring(0, url.lastIndexOf('/'));
+        console.log(backURL);
+
+        window.location.href = backURL + "/end" + (inVSCode ? ".html" : "") + "?ch=" + chapterNum;
         return;
     }
     
