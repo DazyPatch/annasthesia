@@ -7,6 +7,21 @@ const pagesPath = wordpressImageFolderPath + chapterFolderPath + "/";
 
 var pages = [];
 var showingGoBackAtBeginning = true;
+addEventListener("keydown", (event) => {
+    if (event.key == "ArrowLeft"){
+        const prevPage = document.querySelector(".goPrev");
+        if(prevPage.style.visibility != "hidden"){
+            prevPage.click();
+        }
+        
+    }
+    if (event.key == "ArrowRight"){
+        const nextPage = document.querySelector(".goNext");
+        nextPage.click();
+
+        
+    }
+})
 
 
 document.addEventListener("scroll", function(event){
@@ -56,6 +71,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     backButton.href = backURL + "/index.html";
 
     // removeExtension();
+    
 
     setTimeout(function(){
         const backButtonContainer = document.querySelector(".backButtonContainer");
@@ -91,9 +107,9 @@ function hideOrShowTouchArea(){
     const prevButton = document.querySelector(".goPrev"); 
 
 
-    if (prevButton.destination < 1){
+    if (prevButton.destination < 1 && chapterNum == 1){
         prevButton.style.visibility = "hidden";
-        prevButton.destination = 1;
+        // prevButton.destination = 1;
     } else{
         prevButton.style.visibility = "visible";
     }
@@ -112,6 +128,18 @@ function goToPageNum(pnum){
         console.log(backURL);
 
         window.location.href = backURL + "/end" + (inVSCode ? ".html" : "") + "?ch=" + chapterNum;
+        return;
+    }
+    if (pnum < 1){
+        
+        let url = window.location.href;
+        let backURL = url.substring(0, url.lastIndexOf('/'));
+        // console.log(backURL + "/end" + (inVSCode ? ".html" : "") + "?ch=" + (chapterNum-1));
+        if(chapterNum - 1 == 0){
+            window.location.href = ".." + (inVSCode ? "/index.html" : "");
+            return;
+        }
+        window.location.href = backURL + "/end" + (inVSCode ? ".html" : "") + "?ch=" + (chapterNum-1);
         return;
     }
     

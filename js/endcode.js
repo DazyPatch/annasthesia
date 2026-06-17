@@ -1,3 +1,20 @@
+addEventListener("keydown", (event) => {
+    let params = new URLSearchParams(document.location.search);
+    var pageNumber = parseInt(params.get("pg"));
+
+    if (event.key == "ArrowLeft"){
+        const prevPage = document.querySelector(".prev-page");
+        prevPage.click();
+    }
+    if (event.key == "ArrowRight"){
+        const nextChapter = document.querySelector(".next-chapter");
+  
+        if(nextChapter.style.display != "none"){
+            nextChapter.click();
+        }
+    }
+})
+
 document.addEventListener("DOMContentLoaded", function(event) {
 
     const prevPage = document.querySelector(".prev-page");
