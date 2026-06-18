@@ -5,40 +5,32 @@ const wordpressImageFolderPath = "../Chapters/"; //DO NOT CHANGE UNDER NORMAL CI
 const chapterFolderPath = "Ch" + chapterNum;
 const pagesPath = wordpressImageFolderPath + chapterFolderPath + "/";
 
+
 var pages = [];
 var showingGoBackAtBeginning = true;
-addEventListener("keydown", (event) => {
-    if (event.key == "ArrowLeft"){
-        const prevPage = document.querySelector(".goPrev");
-        if(prevPage.style.visibility != "hidden"){
-            prevPage.click();
-        }
-        
+
+
+function hidePopup(){
+    localStorage.setItem("hasSeenPopup", "true");
+    getIfNeedsPopup();
+}
+
+function getIfNeedsPopup(){
+    if (!("hasSeenPopup" in localStorage)) {
+        localStorage.setItem("hasSeenPopup", "false");
     }
-    if (event.key == "ArrowRight"){
-        const nextPage = document.querySelector(".goNext");
-        nextPage.click();
-
-        
-    }
-})
-
-
-document.addEventListener("scroll", function(event){
-    let lastKnownScrollPosition = window.scrollY;
-    var roundedPosition = parseInt(lastKnownScrollPosition.toPrecision(2));
-    const backButtonContainer = document.querySelector(".backButtonContainer");
-    if(showingGoBackAtBeginning || roundedPosition < backButtonContainerHeight){
-        //show the container
-        
-        backButtonContainer.classList.remove("backButtonHidden");
-        backButtonContainer.classList.add("backButtonShown")
+    const hasSeen = JSON.parse(localStorage.getItem("hasSeenPopup"));
+    const popupcontainer = document.querySelector(".popup-container");
+    if(hasSeen){
+        popupcontainer.style.visibility = "hidden";
     } else{
-        backButtonContainer.classList.remove("backButtonShown");
-        backButtonContainer.classList.add("backButtonHidden")
+        popupcontainer.style.visibility = "visible";
     }
-});
+}
+
+
 document.addEventListener("DOMContentLoaded", function(event) {
+    getIfNeedsPopup();
     if (usingBackButton){
         window.scrollTo(0, backButtonContainerHeight);
     }
@@ -83,6 +75,41 @@ document.addEventListener("DOMContentLoaded", function(event) {
     
 });
 
+addEventListener("keydown", (event) => {
+    if (event.key == "ArrowLeft"){
+        const prevPage = document.querySelector(".goPrev");
+        if(prevPage.style.visibility != "hidden"){
+            prevPage.click();
+        }
+        
+    }
+    if (event.key == "ArrowRight"){
+        const nextPage = document.querySelector(".goNext");
+        nextPage.click();
+
+        
+    }
+})
+
+
+document.addEventListener("scroll", function(event){
+    
+    let lastKnownScrollPosition = window.scrollY;
+    var roundedPosition = parseInt(lastKnownScrollPosition.toPrecision(2));
+    const backButtonContainer = document.querySelector(".backButtonContainer");
+    if(showingGoBackAtBeginning || roundedPosition < backButtonContainerHeight){
+        //show the container
+        
+        backButtonContainer.classList.remove("backButtonHidden");
+        backButtonContainer.classList.add("backButtonShown")
+    } else{
+        backButtonContainer.classList.remove("backButtonShown");
+        backButtonContainer.classList.add("backButtonHidden")
+    }
+});
+
+
+
 function initNav2(){
     const navMenu = document.querySelector(".navMenu");  
     let toInsert = '';
@@ -125,7 +152,7 @@ function goToPageNum(pnum){
         
         let url = window.location.href;
         let backURL = url.substring(0, url.lastIndexOf('/'));
-        console.log(backURL);
+        // console.log(backURL);
 
         window.location.href = backURL + "/end" + (inVSCode ? ".html" : "") + "?ch=" + chapterNum;
         return;

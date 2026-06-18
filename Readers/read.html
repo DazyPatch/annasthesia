@@ -10,6 +10,7 @@
     <meta property="og:image" content="https://dazypatch.github.io/annasthesia/images/bonnie-jump.png" />
     <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 
+    <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet'>
     <link rel="stylesheet" href="../css/reader.css" type="text/css" media="all" />
     
     <script type="text/javascript" src="../js/globalVariables.js"></script>
@@ -18,11 +19,22 @@
     <script type="text/javascript" src="../js/updateHTMLTitle.js"></script>
 </head>
 <body>
-<div class="backButtonContainer">
-        <a class="backButton" href = "">
-            Back
-        </a>
+
+<div class = "popup-container">
+    <div class = "popup" >
+        <button class = "close-button" onclick="hidePopup()">
+
+        </button>
+        <p>Please read the comic from right to left.</p>
+
     </div>
+</div>
+
+<div class="backButtonContainer">
+    <a class="backButton" href = "">
+        Home
+    </a>
+</div>
 <div class="pageContainer">
     <div class = "goTo">
         <div class = "goPrev"></div>
