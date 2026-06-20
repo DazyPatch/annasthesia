@@ -9,18 +9,6 @@ const pagesPath = wordpressImageFolderPath + chapterFolderPath + "/";
 var pages = [];
 var showingGoBackAtBeginning = true;
 
-const allMetas = document.querySelectorAll("meta");
-for ( metaTag of allMetas){
-    if (metaTag.getAttribute("property") == "og:image");{
-        const pageNumber = params.get("pg");
-        if(pageNumber){
-            metaTag.setAttribute("content") = "https://dazypatch.github.io/annasthesia/" + chapterFolderPath + "/" + pageNumber.padStart(2, "0");
-        }
-        
-    }
-
-}
-
 
 function hidePopup(){
     localStorage.setItem("hasSeenPopup", "true");
@@ -75,7 +63,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     backButton.href = backURL + "/index.html";
 
     // removeExtension();
-    
     
 
     setTimeout(function(){
