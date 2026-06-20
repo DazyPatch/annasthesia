@@ -31,9 +31,7 @@ function getIfNeedsPopup(){
 
 document.addEventListener("DOMContentLoaded", function(event) {
     getIfNeedsPopup();
-    if (usingBackButton){
-        window.scrollTo(0, backButtonContainerHeight);
-    }
+
     if (!chapterNum || chapterNum > pagesLengths.length || chapterNum < 1 ){
         window.location.href = ".." + (inVSCode ? "/index.html" : "");
     }
@@ -54,7 +52,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
     
     createPage();
     hideOrShowTouchArea();
-
+    if (usingBackButton){
+        window.scrollTo(0, document.body.scrollHeight);
+    }
     const backButton = document.querySelector(".backButton");
     let url = window.location.href;
     let backURL = url.substring(0, url.lastIndexOf('/'));
@@ -95,7 +95,7 @@ addEventListener("keydown", (event) => {
 document.addEventListener("scroll", function(event){
     
     let lastKnownScrollPosition = window.scrollY;
-    var roundedPosition = parseInt(lastKnownScrollPosition.toPrecision(2));
+    var roundedPosition = Math.round(lastKnownScrollPosition);
     const backButtonContainer = document.querySelector(".backButtonContainer");
     if(showingGoBackAtBeginning || roundedPosition < backButtonContainerHeight){
         //show the container

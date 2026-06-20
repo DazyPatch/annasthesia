@@ -9,11 +9,18 @@
 }
 
 @media (max-width: 1000px) {
-    :root{
+    /* :root{
         --back-button-container-height : 120px;
-    }
+    } */
+     
     .backButton{
         font-size: 40px;
+        height: calc(var(--back-button-container-height) * 1.4) !important;
+        width: calc(var(--back-button-container-height) * 4) !important;
+        border-radius: calc(var(--back-button-container-height) * 0.7) !important;
+    }
+    .backButtonContainer.backButtonHidden .backButton{
+        translate: 0 calc(var(--back-button-container-height) * -2) !important;
     }
     .popup{
         width:80% !important;
@@ -31,6 +38,7 @@
 body{
     margin:0;
     padding:0;
+    background-color: var(--background-color);
 }
 .pageImage{
     max-height: 100%;
@@ -173,6 +181,7 @@ body{
 
 .popup-container{
     display: flex;
+    visibility: hidden;
     background-color: rgba(0, 0, 0, 0.47);
     position: absolute;
     width: 100%;
