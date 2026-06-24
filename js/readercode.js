@@ -40,7 +40,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
     for (let i = 0; i < pagesLength; i++){
         var curImg = new Image();
         var leadingZero = i + 1 < 10 ? "0" :'';
-        curImg.src = pagesPath + leadingZero + (i+1).toString() + ".png";
+        curImg.src = pagesPath + leadingZero + (i+1).toString() + ".jpg";
+        curImg.onerror= function(event){event.target.src = event.target.src.replace("jpg", "png");};
         curImg.classList = "pageImage";
         pages.push(curImg);
     }
