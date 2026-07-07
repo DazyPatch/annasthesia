@@ -53,16 +53,18 @@ document.addEventListener("DOMContentLoaded", function(event) {
     
     createPage();
     hideOrShowTouchArea();
+    
+    const backButton = document.querySelector(".backButton");
+    // let url = window.location.href;
+    // let backURL = url.substring(0, url.lastIndexOf('/'));
+    // backURL = backURL.substring(0, backURL.lastIndexOf('/'));
+    // console.log(backURL);
+    backButton.href = "./../index.html";
+
     if (usingBackButton){
         window.scrollTo(0, document.body.scrollHeight);
+        console.log(document.body.scrollHeight);
     }
-    const backButton = document.querySelector(".backButton");
-    let url = window.location.href;
-    let backURL = url.substring(0, url.lastIndexOf('/'));
-    backURL = backURL.substring(0, backURL.lastIndexOf('/'));
-    console.log(backURL);
-    backButton.href = backURL + "/index.html";
-
     // removeExtension();
     
 
