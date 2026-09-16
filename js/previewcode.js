@@ -88,7 +88,9 @@ addEventListener("keydown", (event) => {
     }
     if (event.key == "ArrowRight"){
         const nextPage = document.querySelector(".goNext");
-        nextPage.click();
+        if(nextPage.style.visibility != "hidden"){
+            nextPage.click();
+        }
 
         
     }
