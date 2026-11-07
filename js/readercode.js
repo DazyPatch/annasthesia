@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     // console.log(backURL);
     backButton.href = "./../index.html";
 
-    if (usingBackButton){
+    if (true || usingBackButton){
         window.scrollTo(0, document.body.scrollHeight);
         console.log(document.body.scrollHeight);
     }
