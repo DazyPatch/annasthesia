@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     const prevPage = document.querySelector(".prev-page");
     prevPage.href = "../Readers/read.html?ch=" + chapterNum + "&pg=" + pagesLength;
 
-    const endOf = document.querySelector(".read-botmoder");
+    const endOf = document.querySelector(".end-chapter");
     endOf.innerHTML = "End of Chapter " + chapterNum;
 
     const nextChapter = document.querySelector(".next-chapter");

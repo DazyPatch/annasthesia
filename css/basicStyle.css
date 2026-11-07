@@ -198,3 +198,52 @@ footer{
     border-radius: 50%;
 }
 
+.end-menu-container{
+    display:flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    padding: 50px;
+}
+
+.end-menu-container h1{
+    text-decoration: none;
+    font-family: "Nunito";
+    font-weight: bold;
+    font-size: 40px;
+    color:white;
+    /* margin-top:150px; */
+    /* text-align:center; */
+    -webkit-text-stroke: 7px black;
+    /* margin:auto; */
+    /* margin-bottom:0; */
+}
+
+.end-website-logo{
+    width:25%;
+    /* margin:auto; */
+    /* margin-bottom:0; */
+}
+
+
+.backButton{
+
+    
+
+    height: calc(var(--back-button-container-height) * 0.7);
+    width: calc(var(--back-button-container-height) * 2);
+    background-color: white;
+    border: 3px black solid;
+    border-radius: calc(var(--back-button-container-height) * 0.35);
+    margin: 10px auto;
+    display: block;
+    align-content:center;
+    text-align:center;
+    color: black;
+
+    text-decoration: none;
+    font-family: "Nunito";
+    font-weight: bold;
+
+}
+
