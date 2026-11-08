@@ -1,0 +1,38 @@
+:root{
+    --back-button-container-height: 60px;
+}
+@media (max-width: 1000px) {
+    /* :root{
+        --back-button-container-height : 120px;
+    } */
+     
+    .button{
+
+        font-size: 40px;
+        height: calc(var(--back-button-container-height) * 1.7) !important;
+        width: 400px !important;
+        border-radius: calc(var(--back-button-container-height) * 0.7) !important;
+        border: 7px black solid !important;
+    }
+    /* .backButtonContainer.backButtonHidden .backButton{
+        translate: 0 calc(var(--back-button-container-height) * -2) !important;
+    } */
+}
+.button{
+    height: calc(var(--back-button-container-height) * 0.7);
+    width: calc(var(--back-button-container-height) * 3);
+    
+    background-color: white;
+    border: 3px black solid;
+    border-radius: calc(var(--back-button-container-height) * 0.35);
+    margin: 10px auto;
+    display: block;
+    align-content:center;
+    text-align:center;
+    color: black;
+
+    text-decoration: none;
+    font-family: "Nunito";
+    font-weight: bold;
+
+}

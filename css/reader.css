@@ -173,6 +173,7 @@ body{
     text-align:center;
     color: black;
     position:fixed;
+    box-sizing: border-box;
 
     text-decoration: none;
     font-family: "Nunito";

@@ -1,0 +1,45 @@
+.bottom-bar img{
+    height: 30px;
+    border-radius: 50%;
+}
+
+.bottom-bar p{
+    text-decoration: none;
+    font-family: "Nunito";
+    font-weight: bold;
+}
+.bottom-bar a{
+
+    background-color: white;
+    border-radius:50px;
+
+
+    display:inline-flex;
+    padding:5px;
+    box-sizing:border-box;
+    padding-right:15px;
+    gap:10px;
+    align-items: center;
+
+    color:black;
+    font-size:20px;
+    text-decoration: none;
+    font-family: "Nunito";
+    font-weight: bold;
+}
+
+@media (max-width: 1000px) {
+    .bottom-bar p{
+        font-size: 40px;
+    }
+    .bottom-bar a div{
+        font-size: 40px;
+        height:55px; 
+    }
+    .bottom-bar img{
+        height: 55px !important;
+        border-radius: 50%;
+    }
+
+
+}
