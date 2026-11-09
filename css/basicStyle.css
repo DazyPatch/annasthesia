@@ -1,17 +1,25 @@
 .main-website-logo{
     width: 80%;
 }
+
+.nunito-text{
+  font-family: "Nunito", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+
+}
 body{
     background-color:rgb(132, 190, 255);
     margin: 0;
-    overflow-x:hidden;
-
+    overflow-x: hidden;
 }
 .full-width{
     background-image: linear-gradient(to bottom, rgb(127, 154, 235), rgb(193, 218, 247));
     min-height:100vh;
     width:100%;
     display:flex;
+    justify-content: space-between;;
 }
 
 .bottom-bar, .menu-container{
@@ -23,60 +31,69 @@ body{
     margin: 40px 50px;
     display:flex;
     flex-direction: column;
-    
     width:35%;
+    /* min-width:400px; */
+    /* width: 520px; */
 }
 
 .img-container{
-
     display:flex;
     position:relative;
-    right:15%;
+    right:0;
     bottom:0;
     z-index: 0;
+    /* background-color:red; */
+    /* width:100%; */
+    flex-grow:1;
 
 }
 .img-container img{
     position:absolute;
     bottom:0;
-    height:900px;
+    /* height:900px; */
+    /* right:-300px; */
+    width:150%;
+    /* height:120vh; */
+    /* width:120vw; */
+    /* left:-940px; */
+    right: -37%;
 }
 
 .read-botmoder{
-    /* font: bold 50px Arial; */
     text-decoration: none;
-    font-family: "Nunito";
-    font-weight: bold;
+    font-family: "Nunito", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
     font-size: 30px;
+
     color:white;
     margin:15px 0px;
-    /* text-align:center; */
     -webkit-text-stroke: 5px black;
-
 }
 .fix-stroke {
    paint-order: stroke fill;
 }
 
 
-@media (max-width: 1000px) {
+@media (max-width: 768px) {
+    .main-website-logo{
+        width: 80%;
+        align-self:center;
+    }
     .main-container{
         width:100% ;
         margin:0;
-        padding:50px;
+        padding:20px;
         box-sizing: border-box;
     }
     .menu-container{
         width:100%;
     }
-    .menu-container  a{
-        font-size: 50px;
-    }
     .menu-container  p{
-        font-size: 50px;
-        -webkit-text-stroke: 10px black;
+        font-size: 20px;
+        -webkit-text-stroke: 4px black;
     }
-
     .bottom-bar, .menu-container{
         margin-left:0px;
     }
@@ -84,18 +101,15 @@ body{
         flex-direction: column;
         overflow-x:hidden;
     }
-    .img-container img{
-        position:static !important;
-        display:block !important;
-    }
+
     .img-container {
-        display:block !important;
-        position:static !important;
+        align-self:flex-end;
+        /* height: 300px; */
+        height:70vw;
+        /* background-color:red; */
+        width:100%;
+        /* width:800px; */
     }
-
-    
-
-
 }
 
 

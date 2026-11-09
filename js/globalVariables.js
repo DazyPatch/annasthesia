@@ -3,7 +3,7 @@ const params = new URLSearchParams(document.location.search);
 const chapterNum = parseInt(params.get("ch"));
 
 
-const pagesLengths = [47, 19, 20]
+const pagesLengths = [47, 19, 20];
 const pagesLength = pagesLengths[chapterNum-1];
 const previewLength = 18;
 

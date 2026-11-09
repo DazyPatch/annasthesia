@@ -11,7 +11,7 @@ ul {
 li:nth-child(odd){background-color: #433d54;}
 li:nth-child(even){background-color: #59526e;}
 li a:hover {
-    background-color: #a99dca;
+    background-color: #c8bde4;
     color:black;
 }
 li a{
@@ -31,9 +31,12 @@ li a span{
     /* padding:0; */
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 768px) {
     li a span{
-        font-size: 40px;
+        font-size: 16px;
+    }
+    li a{
+        font-size: 20px;
     }
 
 

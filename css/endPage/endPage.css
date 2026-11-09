@@ -9,11 +9,11 @@
 .end-menu-container h1{
     text-decoration: none;
     font-family: "Nunito";
-    font-weight: bold;
+    font-weight: 700;
     font-size: 40px;
     color:white;
 
-    -webkit-text-stroke: 7px black;
+    -webkit-text-stroke: 5px black;
 
 }
 
@@ -21,37 +21,26 @@
     display:flex;
     flex-direction: row;
     gap: 15px;
+    max-width:100%;
 }
 
 .end-website-logo{
     width:25%;
 }
 
-.end-img-correction{
-    right:55%;
-    /* height:750px; */
-}
-.end-img-correction img{
-    /* right:65%; */
-    height:750px;
-}
-
-@media (max-width: 1000px) {
+@media (max-width: 768px) {
     
     .end-menu-container{
-        gap: 90px;
+        gap: 36px;
+        padding: 20px;
     }
     .end-menu-container img{
         width: 80%;
     }
     .end-menu-container h1{
         /* width: 80%; */
-        font-size: 70px !important;
-        -webkit-text-stroke: 14px black;
+        font-size: 28px;
+        -webkit-text-stroke: 6px black;
     }
-    /* .end-menu-container div a{
-        width: 80%;
-        font-size: 40px !important;
-    } */
 
 }

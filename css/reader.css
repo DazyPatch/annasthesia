@@ -2,38 +2,13 @@
     --page-height : 97vh;
     
     --back-button-container-height: 60px;
-        --using-back-button : 1; /* 0 if false, 1 if true */
-        --loading-page-color: white; /* when image is still loading, this colour appears. Preferably comic border colour */
-        --background-color: rgb(48, 38, 50);
-        --progress-bar-color: rgb(96, 96, 254);
+    --using-back-button : 1; /* 0 if false, 1 if true */
+    --loading-page-color: white; /* when image is still loading, this colour appears. Preferably comic border colour */
+    --background-color: rgb(48, 38, 50);
+    --progress-bar-color: rgb(96, 96, 254);
 }
 
-@media (max-width: 1000px) {
-    /* :root{
-        --back-button-container-height : 120px;
-    } */
-     
-    .backButton{
-        font-size: 40px;
-        height: calc(var(--back-button-container-height) * 1.4) !important;
-        width: calc(var(--back-button-container-height) * 4) !important;
-        border-radius: calc(var(--back-button-container-height) * 0.7) !important;
-    }
-    .backButtonContainer.backButtonHidden .backButton{
-        translate: 0 calc(var(--back-button-container-height) * -2) !important;
-    }
-    .popup{
-        width:80% !important;
-    }
-    .popup p{
-        font-size: 48px;
-    }
-    .popup .close-button{
-        height:60px !important;
-        width:60px !important;
-        font-size: 48px;
-    }
-}
+
 /* for reader */
 body{
     margin:0;
@@ -53,12 +28,6 @@ body{
 
     display:block;
 }
-.pageContainer{
-    height: 100vh;
-    margin: 0 !important;
-    max-width: 100% !important;
-    background-color: var(--background-color);
-}
 .pageImageContainer{
     height : var(--page-height);
     align-content: center;
@@ -68,7 +37,7 @@ body{
 
     position:absolute;
     z-index: 5;
-    bottom:  calc(var(--back-button-container-height) * -1 * var(--using-back-button));
+    bottom:  calc(var(--back-button-container-height) * -1 );
     height: calc((100vh - var(--page-height) ) * 1.5);
     width:100%;
     display:block;
@@ -84,6 +53,7 @@ body{
     width : 90%;
     height:100%;
     margin:auto;
+    gap:3px;
     display: flex;
     flex-direction: row;
 
@@ -109,7 +79,8 @@ body{
 }
 .pageToButton{
     height: 10%;
-    margin: auto 0.3% auto 0.3% ;
+    margin:auto;
+    /* margin: auto 0.3% auto 0.3% ; */
     flex: auto;
     background-color: rgba(210, 208, 255, 0.3);
     border: none;
@@ -119,13 +90,14 @@ body{
 .navMenu:hover .pageToButton{
     height:30%;
 }
-.upTo{
-    background-color: var(--progress-bar-color) !important;
-}
+
 .pageToButton:hover{
     background-color: rgba(210, 208, 255, 0.6);
     transition: background-color 0.3s;
     /* transition: backgroun */
+}
+.pageToButton.upTo{
+    background-color: var(--progress-bar-color) ;
 }
 .goTo{
     position: absolute;
@@ -145,7 +117,6 @@ body{
 }
 .backButtonContainer{
     height: calc(var(--back-button-container-height) * var(--using-back-button));
-    max-width : 100% !important;
     margin: 0;
     padding: 0;
     background-color: var(--background-color);
@@ -225,5 +196,28 @@ body{
 }
 
 .wp-site-blocks{
-padding:0px;
+    padding:0px;
+}
+
+@media (max-width: 768px) {
+    .backButton{
+        font-size: 15px;
+        height: calc(var(--back-button-container-height) * 0.6);
+        width: calc(var(--back-button-container-height) * 1.5);
+        border-radius: calc(var(--back-button-container-height) * 0.35);
+    }
+    .backButtonContainer.backButtonHidden .backButton{
+        translate: 0 calc(var(--back-button-container-height) * -2);
+    }
+    .popup{
+        width:80%;
+    }
+    .popup p{
+        font-size: 20px;
+    }
+    .popup .close-button{
+        height:60px;
+        width:60px;
+        font-size: 48px;
+    }
 }

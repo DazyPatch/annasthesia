@@ -100,7 +100,7 @@ document.addEventListener("scroll", function(event){
     let lastKnownScrollPosition = window.scrollY;
     var roundedPosition = Math.round(lastKnownScrollPosition);
     const backButtonContainer = document.querySelector(".backButtonContainer");
-    if(showingGoBackAtBeginning || roundedPosition < backButtonContainerHeight){
+    if(showingGoBackAtBeginning || roundedPosition < backButtonContainer.offsetHeight){
         //show the container
         
         backButtonContainer.classList.remove("backButtonHidden");
@@ -145,11 +145,15 @@ function hideOrShowTouchArea(){
     }
 }
 
+// document.addEventListener("click", function(event) {
+//     console.log("click");
+
+// })
 
 function goToPageNum(pnum){
-    if (usingBackButton){
-        window.scrollTo({top: backButtonContainerHeight, behavior: "smooth"});
-    }
+    window.scrollTo({top: document.body.scrollHeight, behavior:"smooth"});
+    console.log(pnum);
+    // console.log(document.body.scrollHeight);
 
     if (pnum > pagesLength){
         
