@@ -116,7 +116,7 @@ body{
     cursor: pointer;
 }
 .backButtonContainer{
-    height: calc(var(--back-button-container-height) * var(--using-back-button));
+    height: var(--back-button-container-height);
     margin: 0;
     padding: 0;
     background-color: var(--background-color);

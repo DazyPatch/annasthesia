@@ -51,6 +51,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
     nextButton.addEventListener("click",  nextPage, false);
     prevButton.addEventListener("click",  nextPage, false);
     
+    history.scrollRestoration = "manual";
+    window.scrollTo(0, document.body.scrollHeight);
+
     createPage();
     hideOrShowTouchArea();
     
@@ -61,10 +64,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
     // console.log(backURL);
     backButton.href = "./../index.html";
 
-    if (true){
-        window.scrollTo(0, document.body.scrollHeight);
-        console.log(document.body.scrollHeight);
-    }
+    // if (true){
+    //     window.scrollTo(0, document.body.scrollHeight);
+    //     console.log(document.body.scrollHeight);
+    // }
     // removeExtension();
     
 
@@ -152,7 +155,7 @@ function hideOrShowTouchArea(){
 
 function goToPageNum(pnum){
     window.scrollTo({top: document.body.scrollHeight, behavior:"smooth"});
-    console.log(pnum);
+    // console.log(pnum);
     // console.log(document.body.scrollHeight);
 
     if (pnum > pagesLength){

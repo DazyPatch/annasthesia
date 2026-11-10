@@ -9,7 +9,7 @@
     color:black;
 }
 
-.bottom-bar a:visited{
+.bottom-bar a:visited, .bottom-bar a:link{
     color:black;
 }
 .bottom-bar a{
