@@ -1,21 +1,35 @@
+:root{
+    --link-color: #433d54;
+    --hover-color: #6a6380;
+}
+
 ul {
-    border: 3px solid #433d54;
+    /* border: 3px solid #433d54; */
     box-sizing: border-box;
     background-color: #433d54;
     list-style-type: none;
-    /* padding-left:0px; */
+ 
     padding: 0px;
     margin: 0px;
     min-height:300px;
 }
-li:nth-child(odd){background-color: #433d54;}
-li:nth-child(even){background-color: #59526e;}
+/* li:nth-child(odd){background-color: #433d54;} */
+/* li:nth-child(even){background-color: #59526e;} */
+li {
+    /* box-sizing: border-box; */
+    background-color: var(--link-color);
+    border-bottom: 2px solid var(--hover-color);
+    height:74px;
+}
 li a:hover {
-    background-color: #c8bde4;
-    color:black;
+    /* background-color: #c8bde4;
+    color:black; */
+    background-color: var(--hover-color);
 }
 li a{
-    display:block;
+    /* display:block; */
+    display:flex;
+    justify-content: space-between;
     padding:9px;
     box-sizing:border-box; 
 
@@ -25,10 +39,17 @@ li a{
 
     text-decoration: none;
     font-family: "Nunito";
+    height:100%;
+}
+li a p {
+    margin:0;
 }
 li a span{
     font-size:15px;
     /* padding:0; */
+}
+li a img{
+    height:100%;
 }
 
 @media (max-width: 768px) {

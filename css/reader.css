@@ -155,9 +155,10 @@ body{
     display: flex;
     visibility: hidden;
     background-color: rgba(0, 0, 0, 0.47);
-    position: absolute;
+    position: fixed;
     width: 100%;
-    height:calc(100% + var(--back-button-container-height));;
+    /* height:calc(100% + var(--back-button-container-height)); */
+    height:100%;
     z-index: 10;
     /* height:100%; */
 }
