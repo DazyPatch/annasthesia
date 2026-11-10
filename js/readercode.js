@@ -51,8 +51,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
     nextButton.addEventListener("click",  nextPage, false);
     prevButton.addEventListener("click",  nextPage, false);
     
-    history.scrollRestoration = "manual";
-    window.scrollTo(0, document.body.scrollHeight);
+    // history.scrollRestoration = "manual";
+    // window.scrollTo(0, document.body.scrollHeight);
 
     createPage();
     hideOrShowTouchArea();
