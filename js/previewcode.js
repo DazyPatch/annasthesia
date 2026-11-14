@@ -1,4 +1,3 @@
-
 let backButtonContainerHeight = 60;
 const usingBackButton = true;
 const wordpressImageFolderPath = "../Chapters/"; //DO NOT CHANGE UNDER NORMAL CIRCUMSTANCE
@@ -61,10 +60,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
     // console.log(backURL);
     backButton.href = "./../index.html";
 
-    if (usingBackButton){
-        window.scrollTo(0, document.body.scrollHeight);
-        console.log(document.body.scrollHeight);
-    }
+    // if (usingBackButton){
+    //     window.scrollTo(0, document.body.scrollHeight);
+    //     console.log(document.body.scrollHeight);
+    // }
     // removeExtension();
     
 
@@ -156,9 +155,7 @@ function hideOrShowTouchArea(){
 
 
 function goToPageNum(pnum){
-    if (usingBackButton){
-        window.scrollTo({top: backButtonContainerHeight, behavior: "smooth"});
-    }
+    window.scrollTo({top: document.body.scrollHeight, behavior:"smooth"});
 
     if (pnum > pagesLength){
         
@@ -191,11 +188,53 @@ function goToPageNum(pnum){
     hideOrShowTouchArea();
     
     document.querySelector(".pageImageContainer").innerHTML="";
+    pages[pageNumber-1].style.display = "inline";
+    pages[pageNumber-1].style.height = "100%";
     document.querySelector(".pageImageContainer").appendChild(pages[pageNumber-1]);
 
     var leadingZero = pageNumber < 10 ? "0" :'';
     pageNumberString = leadingZero + pageNumber.toString();
     const url2 = new URL(window.location.href);
+    if (url2.searchParams.get("explain") == 1){
+        var explain = document.createElement("div");
+        explain.classList.add("explain");
+        explain.style.display = "inline";
+        explain.style.margin = "50px";
+        explain.style.padding = "50px";
+        explain.style.boxSizing = "border-box";
+        // explain.style.justifyContent = "center";
+        // explain.style.alignItems = "center";
+        // explain.style.marginLeft = "0";
+        explain.style.width = "500px";
+        explain.style.height = "fit-content";
+        explain.style.minHeight = "200px";
+        // explain.style.height = "calc(100% - 100px)";
+        explain.style.color = "black";
+        explain.style.fontFamily = "Nunito";
+        explain.style.zIndex = "100";
+
+        
+        const explainString = myexplain[pageNumber-1];
+        if (explainString != ""){
+            explain.innerHTML =  "Click for text explanation.";
+            explain.style.backgroundColor = "white";
+            explain.onclick = function() {
+                document.querySelector('.explain').style.backgroundColor = "unset";
+                document.querySelector('.explain').style.color = "white";
+                // document.querySelector('.explain').style.justifyContent = "unset";
+                // document.querySelector('.explain').style.alignItems = "unset";
+                document.querySelector('.explain').innerHTML = explainString;
+                // document.querySelector('.explain').style.zIndex = 0;
+            };
+        } else{
+            explain.style.visibility = "hidden";
+        }
+        
+        // console.log(myexplain);
+        
+        document.querySelector(".pageImageContainer").appendChild(explain);
+    }
+    
     // url2.searchParams.set("ch", chapterNum);
     url2.searchParams.set("pg", pageNumberString);
     window.history.replaceState('', '', url2);
