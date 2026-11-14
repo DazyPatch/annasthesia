@@ -211,7 +211,7 @@ function goToPageNum(pnum){
         // explain.style.height = "calc(100% - 100px)";
         explain.style.color = "black";
         explain.style.fontFamily = "Nunito";
-        explain.style.zIndex = "100";
+        explain.style.zIndex = "9";
 
         
         const explainString = myexplain[pageNumber-1];
