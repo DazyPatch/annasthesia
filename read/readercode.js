@@ -1,8 +1,9 @@
+
 let backButtonContainerHeight = 60;
 const usingBackButton = true;
 const wordpressImageFolderPath = "../Chapters/"; //DO NOT CHANGE UNDER NORMAL CIRCUMSTANCE
-// const chapterFolderPath = "Ch" + chapterNum;
-const pagesPath = wordpressImageFolderPath + "preview" + "/";
+const chapterFolderPath = "Ch" + chapterNum;
+const pagesPath = wordpressImageFolderPath + chapterFolderPath + "/";
 
 
 var pages = [];
@@ -31,12 +32,12 @@ function getIfNeedsPopup(){
 document.addEventListener("DOMContentLoaded", function(event) {
     getIfNeedsPopup();
 
-    // if (!chapterNum || chapterNum > pagesLengths.length || chapterNum < 1 ){
-    //     window.location.href = ".." + (inVSCode ? "/index.html" : "");
-    // }
+    if (!chapterNum || chapterNum > pagesLengths.length || chapterNum < 1 ){
+        window.location.href = "../" + (inVSCode ? "index.html" : "");
+    }
     
     
-    for (let i = 0; i < previewLength; i++){
+    for (let i = 0; i < pagesLength; i++){
         var curImg = new Image();
         var leadingZero = i + 1 < 10 ? "0" :'';
         curImg.src = pagesPath + leadingZero + (i+1).toString() + ".jpg";
@@ -50,22 +51,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
     nextButton.addEventListener("click",  nextPage, false);
     prevButton.addEventListener("click",  nextPage, false);
     
+    // history.scrollRestoration = "manual";
+    // window.scrollTo(0, document.body.scrollHeight);
+
     createPage();
     hideOrShowTouchArea();
     
     const backButton = document.querySelector(".backButton");
-    // let url = window.location.href;
-    // let backURL = url.substring(0, url.lastIndexOf('/'));
-    // backURL = backURL.substring(0, backURL.lastIndexOf('/'));
-    // console.log(backURL);
     backButton.href = "./../index.html";
-
-    // if (usingBackButton){
-    //     window.scrollTo(0, document.body.scrollHeight);
-    //     console.log(document.body.scrollHeight);
-    // }
-    // removeExtension();
-    
 
     setTimeout(function(){
         const backButtonContainer = document.querySelector(".backButtonContainer");
@@ -87,9 +80,7 @@ addEventListener("keydown", (event) => {
     }
     if (event.key == "ArrowRight"){
         const nextPage = document.querySelector(".goNext");
-        if(nextPage.style.visibility != "hidden"){
-            nextPage.click();
-        }
+        nextPage.click();
 
         
     }
@@ -101,7 +92,7 @@ document.addEventListener("scroll", function(event){
     let lastKnownScrollPosition = window.scrollY;
     var roundedPosition = Math.round(lastKnownScrollPosition);
     const backButtonContainer = document.querySelector(".backButtonContainer");
-    if(showingGoBackAtBeginning || roundedPosition < backButtonContainerHeight){
+    if(showingGoBackAtBeginning || roundedPosition < backButtonContainer.offsetHeight){
         //show the container
         
         backButtonContainer.classList.remove("backButtonHidden");
@@ -121,7 +112,7 @@ function initNav2(){
     var pageNumber = parseInt(params.get("pg"));
     
     navMenu.innerHTML = "";
-    for (let i = 0 ; i < previewLength; i++){
+    for (let i = 0 ; i < pagesLength; i++){
         let upTo = (i+1 <= pageNumber) ? "upTo" : "";
         let newButton = document.createElement("button");
         newButton.classList = "pageToButton " + upTo;
@@ -138,44 +129,32 @@ function hideOrShowTouchArea(){
     const prevButton = document.querySelector(".goPrev"); 
 
 
-    if (prevButton.destination < 1){
+    if (prevButton.destination < 1 && chapterNum == 1){
         prevButton.style.visibility = "hidden";
         // prevButton.destination = 1;
     } else{
         prevButton.style.visibility = "visible";
     }
-
-    if (nextButton.destination > previewLength){
-        nextButton.style.visibility = "hidden";
-        // prevButton.destination = 1;
-    } else{
-        nextButton.style.visibility = "visible";
-    }
 }
 
+// document.addEventListener("click", function(event) {
+//     console.log("click");
+
+// })
 
 function goToPageNum(pnum){
     window.scrollTo({top: document.body.scrollHeight, behavior:"smooth"});
 
     if (pnum > pagesLength){
-        
-        // let url = window.location.href;
-        // let backURL = url.substring(0, url.lastIndexOf('/'));
-        // // console.log(backURL);
-
-        // window.location.href = backURL + "/end" + (inVSCode ? ".html" : "") + "?ch=" + chapterNum;
+        window.location.href = "../end/" + (inVSCode ? "index.html" : "") + "?ch=" + chapterNum;
         return;
     }
-    if (pnum < 1){
-        // pnum = 0;
-        // let url = window.location.href;
-        // let backURL = url.substring(0, url.lastIndexOf('/'));
-        // // console.log(backURL + "/end" + (inVSCode ? ".html" : "") + "?ch=" + (chapterNum-1));
-        // if(chapterNum - 1 == 0){
-        //     window.location.href = ".." + (inVSCode ? "/index.html" : "");
-        //     return;
-        // }
-        // window.location.href = backURL + "/end" + (inVSCode ? ".html" : "") + "?ch=" + (chapterNum-1);
+    if (pnum < 1){        
+        if(chapterNum - 1 == 0){
+            window.location.href = "../" + (inVSCode ? "index.html" : "");
+            return;
+        }
+        window.location.href = "../end/" + (inVSCode ? "index.html" : "") + "?ch=" + (chapterNum-1);
         return;
     }
     
@@ -188,54 +167,12 @@ function goToPageNum(pnum){
     hideOrShowTouchArea();
     
     document.querySelector(".pageImageContainer").innerHTML="";
-    pages[pageNumber-1].style.display = "inline";
-    pages[pageNumber-1].style.height = "100%";
     document.querySelector(".pageImageContainer").appendChild(pages[pageNumber-1]);
 
     var leadingZero = pageNumber < 10 ? "0" :'';
     pageNumberString = leadingZero + pageNumber.toString();
     const url2 = new URL(window.location.href);
-    if (url2.searchParams.get("explain") == 1){
-        var explain = document.createElement("div");
-        explain.classList.add("explain");
-        explain.style.display = "inline";
-        explain.style.margin = "50px";
-        explain.style.padding = "50px";
-        explain.style.boxSizing = "border-box";
-        // explain.style.justifyContent = "center";
-        // explain.style.alignItems = "center";
-        // explain.style.marginLeft = "0";
-        explain.style.width = "500px";
-        explain.style.height = "fit-content";
-        explain.style.minHeight = "200px";
-        // explain.style.height = "calc(100% - 100px)";
-        explain.style.color = "black";
-        explain.style.fontFamily = "Nunito";
-        explain.style.zIndex = "9";
-
-        
-        const explainString = myexplain[pageNumber-1];
-        if (explainString != ""){
-            explain.innerHTML =  "Click for text explanation.";
-            explain.style.backgroundColor = "white";
-            explain.onclick = function() {
-                document.querySelector('.explain').style.backgroundColor = "unset";
-                document.querySelector('.explain').style.color = "white";
-                // document.querySelector('.explain').style.justifyContent = "unset";
-                // document.querySelector('.explain').style.alignItems = "unset";
-                document.querySelector('.explain').innerHTML = explainString;
-                // document.querySelector('.explain').style.zIndex = 0;
-            };
-        } else{
-            explain.style.visibility = "hidden";
-        }
-        
-        // console.log(myexplain);
-        
-        document.querySelector(".pageImageContainer").appendChild(explain);
-    }
-    
-    // url2.searchParams.set("ch", chapterNum);
+    url2.searchParams.set("ch", chapterNum);
     url2.searchParams.set("pg", pageNumberString);
     window.history.replaceState('', '', url2);
     initNav2();

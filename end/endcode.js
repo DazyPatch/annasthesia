@@ -18,7 +18,7 @@ addEventListener("keydown", (event) => {
 document.addEventListener("DOMContentLoaded", function(event) {
 
     const prevPage = document.querySelector(".prev-page");
-    prevPage.href = "../Readers/read.html?ch=" + chapterNum + "&pg=" + pagesLength;
+    prevPage.href = "../read/" + (inVSCode ? "index.html" : "") + "?ch=" + chapterNum + "&pg=" + pagesLength;
 
     const endOf = document.querySelector(".end-chapter");
     endOf.innerHTML = "End of Chapter " + chapterNum;
@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     const nextChapter = document.querySelector(".next-chapter");
 
     if(chapterNum < pagesLengths.length){
-        nextChapter.href = "../Readers/read.html?ch=" + (chapterNum+1) + "&pg=" + 1;
+        nextChapter.href = "../read/" + (inVSCode ? "index.html" : "") + "?ch=" + (chapterNum+1) + "&pg=" + 1;
     } else{
         nextChapter.style.display = "none";
     }
