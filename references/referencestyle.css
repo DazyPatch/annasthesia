@@ -153,9 +153,9 @@ p{
 }
 
 @media (max-width: 768px){
-    .body{
+    .body2{
         margin:25px 5%;
-        /* padding:0; */
+        padding:0;
         /* background-color: var(--background-color); */
         box-sizing: border-box;
     }
