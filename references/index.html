@@ -21,41 +21,87 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="reference.js"></script>
 
     <link rel="stylesheet" href="referencestyle.css" type="text/css" media="all" />
     
     
 </head>
 <body>
-    <h1>Botmoder Bonbon References</h1>
-    <p>These are references and artwork of the comic Botmoder Bonbon. Open the images in a new tab to view them at full size.</p>
-    <div class="column">
-        <div class="list-container">
-            <div class="row title-container">
-                <h2>References</h2>
-                <a  href="./images/botmoderReferences.zip" download>Download All Images</a>
-            </div>
-            <div class="list">
-                <img class="thumbnail" src="./images/bonnieRef.png">
-                <img class="thumbnail" src="./images/lexiRef.png">
-                <img class="thumbnail" src="./images/alvinConcept.png">
-                <img class="thumbnail" src="./images/fullCast.png">
-            </div>
-        </div>
+    <div class="overlay-container" id="overlay_references" data-listnum = "1">
+        <button class="prev-image" onclick="document.querySelector('#overlay_references .overlay').scrollBy({left: - window.innerWidth, behavior:'smooth'}) ;">◄</button>
+        <button class="next-image"onclick="document.querySelector('#overlay_references .overlay').scrollBy({left: window.innerWidth, behavior:'smooth'});" >►</button>
+        <button class="exit"onclick="document.querySelector('#overlay_references').classList.remove('shown');" >&#10006;</button>
+        <ul class="overlay" >
+            <li class="overlay-item">
+                <img draggable = "false" class="" data-idx="0" src="./images/bonnieRef.png">
+            </li>
+            <li class="overlay-item">
+                <img draggable = "false" class="" data-idx="1" src="./images/lexiRef.png">
+            </li>
+            <li class="overlay-item">
+                <img draggable = "false" class="" data-idx="2" src="./images/alvinConcept.png">
+            </li>
+            <li class="overlay-item">
+                <img draggable = "false" class="" data-idx="3" src="./images/fullCast.png">
+            </li>
+        </ul>
+    </div>
 
-        <div class="list-container">
-            <div class="row title-container">
-                <h2>Artwork</h2>
-                <a  href="./images/botmoderArtwork.zip" download>Download All Images</a>
+    <div class="overlay-container" id="overlay_artworks" data-listnum = "2">
+        <button class="prev-image" onclick="document.querySelector('#overlay_artworks .overlay').scrollBy({left: - window.innerWidth, behavior:'smooth'}) ;">◄</button>
+        <button class="next-image"onclick="document.querySelector('#overlay_artworks .overlay').scrollBy({left:window.innerWidth, behavior:'smooth'});" >►</button>
+        <button class="exit"onclick="document.querySelector('#overlay_artworks').classList.remove('shown');" >&#10006;</button>
+        <ul class="overlay">
+            <li class="overlay-item">
+                <img draggable = "false" class="" data-idx="4" src="./images/bonnieJump.png">
+            </li>
+            <li class="overlay-item">
+                <img draggable = "false" class="" data-idx="5" src="./images/bonnieMove.png">
+            </li>
+            <li class="overlay-item">
+                <img draggable = "false" class="" data-idx="6" src="./images/bonnieBubble.png">
+            </li>
+            <li class="overlay-item">
+                <img draggable = "false" class="" data-idx="7" src="./images/agonizerAlvin.png">
+            </li>
+            <li class="overlay-item">
+                <img draggable = "false" class="" data-idx="8" src="./images/alvinVsBonnie.png">
+            </li>
+        </ul>
+    </div>
+
+    <div class="body2">
+        <h1>Botmoder Bonbon References</h1>
+        <p>These are references and artwork of the comic Botmoder Bonbon. Open the images in a new tab to view them at full size.</p>
+        <div class="column">
+            <div class="list-container">
+                <div class="row title-container">
+                    <h2>References</h2>
+                    <a  href="./images/botmoderReferences.zip" download>Download All Images</a>
+                </div>
+                <div class="list" >
+                    <img class="thumbnail"  onclick = "scrollToImage(1, 0);" src="./images/bonnieRef.png">
+                    <img class="thumbnail"  onclick = "scrollToImage(1, 1);" src="./images/lexiRef.png">
+                    <img class="thumbnail"  onclick = "scrollToImage(1, 2);" src="./images/alvinConcept.png">
+                    <img class="thumbnail"  onclick = "scrollToImage(1, 3);" src="./images/fullCast.png">
+                </div>
             </div>
-            <div class="list">
-                <img class="thumbnail" src="./images/bonnieJump.png">
-                <img class="thumbnail" src="./images/bonnieMove.png">
-                <img class="thumbnail" src="./images/bonnieBubble.png">
-                <img class="thumbnail" src="./images/agonizerAlvin.png">
-                <img class="thumbnail" src="./images/alvinVsBonnie.png">
+
+            <div class="list-container">
+                <div class="row title-container">
+                    <h2>Artwork</h2>
+                    <a  href="./images/botmoderArtwork.zip" download>Download All Images</a>
+                </div>
+                <div class="list" >
+                    <img class="thumbnail" onclick = "scrollToImage(2, 4);" src="./images/bonnieJump.png">
+                    <img class="thumbnail" onclick = "scrollToImage(2, 5);" src="./images/bonnieMove.png">
+                    <img class="thumbnail" onclick = "scrollToImage(2, 6);" src="./images/bonnieBubble.png">
+                    <img class="thumbnail" onclick = "scrollToImage(2, 7);" src="./images/agonizerAlvin.png">
+                    <img class="thumbnail" onclick = "scrollToImage(2, 8);" src="./images/alvinVsBonnie.png">
+                </div>
             </div>
+            
         </div>
-        
     </div>
 </body>
