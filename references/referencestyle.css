@@ -16,6 +16,17 @@ body{
     
     box-sizing: border-box;
 }
+
+.home-button{
+    width:20%;
+    margin:auto;
+    display:block;
+    margin-bottom:20px;
+}
+.home-button img{
+    width:100%;
+}
+
 .row{
     display:flex;
     /* justify-content: flex-start; */
@@ -154,15 +165,15 @@ p{
 
 @media (max-width: 768px){
     .body2{
-        margin:25px 5%;
-        padding:0;
-        /* background-color: var(--background-color); */
-        box-sizing: border-box;
+        padding:25px 5%;
     }
     .list{
         height:200px;
     }
     a{
         font-size: small;
+    }
+    .home-button{
+        width:40%;
     }
 }
